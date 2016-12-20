@@ -1,12 +1,12 @@
 import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
-import org.jetbrains.kotlin.noarg.gradle.NoArgExtension
+//import org.jetbrains.kotlin.noarg.gradle.NoArgExtension
 import org.junit.platform.gradle.plugin.EnginesExtension
 import org.junit.platform.gradle.plugin.FiltersExtension
 import org.junit.platform.gradle.plugin.JUnitPlatformExtension
 import java.util.concurrent.TimeUnit
 
 buildscript {
-	val kotlinVersion = "1.1-M04"
+	val kotlinVersion = "1.0.6-eap-112"
 	val junitPlatformVersion = "1.0.0-M3"
 	extra["kotlinVersion"] = kotlinVersion
 	extra["junitPlatformVersion"] = junitPlatformVersion
@@ -14,12 +14,12 @@ buildscript {
 	repositories {
 		mavenCentral()
 		jcenter()
-		maven{ setUrl("https://dl.bintray.com/kotlin/kotlin-eap-1.1") }
+		maven{ setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
 	}
 
 	dependencies {
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-		classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
+		//classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
 		classpath("com.github.jengelman.gradle.plugins:shadow:1.2.4")
 		classpath("org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion")
 	}
@@ -28,7 +28,7 @@ buildscript {
 apply {
 	plugin("idea")
 	plugin("kotlin")
-	plugin("kotlin-noarg")
+	//plugin("kotlin-noarg") Not stable yet in IDEA
 	plugin("application")
 	plugin("org.junit.platform.gradle.plugin")
 	plugin("com.github.johnrengelman.shadow")
@@ -37,9 +37,10 @@ apply {
 version = "1.0.0-SNAPSHOT"
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 	maven { setUrl("https://dl.bintray.com/jetbrains/spek") }
-	maven{ setUrl("https://dl.bintray.com/kotlin/kotlin-eap-1.1") }
+	maven{ setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
 	maven { setUrl("https://repo.spring.io/snapshot") }
 	maven { setUrl("https://repo.spring.io/milestone") }
 }
@@ -77,9 +78,9 @@ fun FiltersExtension.engines(setup: EnginesExtension.() -> Unit) {
     }
 }
 
-configure<NoArgExtension> {
-	annotation("org.springframework.data.mongodb.core.mapping.Document")
-}
+//configure<NoArgExtension> {
+//	annotation("org.springframework.data.mongodb.core.mapping.Document")
+//}
 
 configurations.all {
 	it.resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
@@ -97,7 +98,7 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
 	compile("org.springframework:spring-web-reactive:$springVersion")
-	compile("com.github.jknack:handlebars:4.0.6")
+	compile("com.samskivert:jmustache:1.13")
 
 	compile("io.projectreactor:reactor-core:$reactorVersion")
 	compile("io.projectreactor.ipc:reactor-netty:0.6.0.BUILD-SNAPSHOT")
