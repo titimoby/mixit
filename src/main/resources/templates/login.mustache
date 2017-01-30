@@ -1,5 +1,15 @@
 {{> header}}
 
+<div class="mxt-wrapper--header">
+    <div class="row">
+        <div class="columns small-12">
+            <h1 class="hide">La conférence Lyonnaise avec des crêpes et du coeur</h1>
+            <span class="mxt-text--bigger">La conférence <span class="mxt-text--cyan">Lyonnaise</span> <br>avec des crêpes et du <span class="mxt-text--orange">coeur</span><object type="image/svg+xml" data="/images/svg/mxt-icon--heart.svg" class="mxt-icon--heart"><img src="/images/png/mxt-icon--heart.png"></object></span>
+            <h2><small>20 &amp; 21 avril 2017</small></h2><br>
+        </div>
+    </div>
+</div>
+
 <div class="large-3 large-centered columns">
   <div class="login-box">
     <div class="row">
@@ -7,7 +17,7 @@
         <form action="/login" method="post">
           <div class="row">
             <div class="large-12 columns">
-              <input type="text" name="username" placeholder="Username" />
+              <input type="text" name="email" placeholder="E-mail" />
             </div>
           </div>
           <div class="row">
@@ -20,6 +30,24 @@
               <input type="submit" class="button expand" value="Log In"/>
             </div>
           </div>
+            <div class="row">
+              Or you can use an OAuth provider
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <select name="provider" placeholder="OAuth provider">
+                        <option></option>
+                        <option value="Github">Github</option>
+                        <option value="Google">Google</option>
+                        <option value="Twitter">Twitter</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+              <div class="large-12 large-centered columns">
+                <input type="submit" class="button expand" value="Log In"/>
+              </div>
+            </div>
         </form>
       </div>
     </div>

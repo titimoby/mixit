@@ -98,6 +98,8 @@ dependencies {
     compile("org.springframework.data:spring-data-mongodb:$springDataVersion")
     compile("org.springframework.data:spring-data-commons:$springDataVersion")
     compile("org.mongodb:mongodb-driver-reactivestreams:1.2.0")
+
+    compile("com.github.scribejava:scribejava-apis:4.0.0")
 }
 
 task<GulpTask>("gulpBuild") {

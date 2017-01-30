@@ -49,6 +49,16 @@ class UserRepository(val template: ReactiveMongoTemplate) {
         return template.find(query)
     }
 
+    fun findByEmail(email: String): Mono<User> {
+        val query = Query().addCriteria(Criteria.where("email").`is`(email))
+        return template.findOne(query)
+    }
+
+    fun findByLogin(login: String): Mono<User> {
+        val query = Query().addCriteria(Criteria.where("year").`is`(login))
+        return template.findOne(query)
+    }
+
     fun findByRole(role: Role): Flux<User> {
         val query = Query().addCriteria(Criteria.where("role").`is`(role))
         return template.find(query)
